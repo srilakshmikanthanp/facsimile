@@ -8,11 +8,13 @@
 @media (prefers-color-scheme: light) {
   :root {
     --hover-bg-color: #0078D7;
+    --brightness-per: 80%;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --hover-bg-color: #0078D7;
+    --brightness-per: 150%;
   }
 }

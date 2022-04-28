@@ -5,23 +5,23 @@
 
 import React, { HTMLAttributes } from "react";
 import styles from "./Keyvalue.module.css";
+import { Pair } from "../../interfaces";
 
 // Properties to Key Value Component
 interface IProps extends HTMLAttributes<HTMLDivElement> {
-  label: string;
-  value: string;
-  onSelected?: (key: string, value: string) => void;
+  pair: Pair;
+  onSelected?: (pair: Pair) => void;
 }
 
 // Actual Component
-export default function Keyvalue({ tabIndex, className, label, value, onSelected }: IProps) {
+export default function Keyvalue({ tabIndex, className, pair, onSelected }: IProps) {
   // Double Click Handler
-  const doubleClickHandler = () => onSelected && onSelected(label, value);
+  const doubleClickHandler = () => onSelected && onSelected(pair);
 
   // on Key press Handler
   const onKeyDownHandler = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      onSelected && onSelected(label, value);
+      onSelected && onSelected(pair);
     }
   }
 
@@ -41,7 +41,7 @@ export default function Keyvalue({ tabIndex, className, label, value, onSelected
       className={classNames}
       onKeyDown={onKeyDownHandler}
     >
-      {label}
+      {pair.key}
     </div>
   );
 }

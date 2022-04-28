@@ -4,16 +4,18 @@
  * This software is released under the MIT License.
  * https://opensource.org/licenses/MIT
  */
+@import url('../../styles/global.css');
 
 .Addbutton {
   height: max-content;
   text-align: center;
-  padding: 10px;
   border-radius: 5px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bolder;
+  user-select: none;
 }
 
 .Addbutton:hover {
-  backdrop-filter: brightness(150%);
+  backdrop-filter: brightness(var(--brightness-per));
+  cursor: pointer;
 }

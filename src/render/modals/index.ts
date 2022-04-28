@@ -3,8 +3,3 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import Homepage from "./Homepage/Homepage";
-
-export {
-    Homepage
-};

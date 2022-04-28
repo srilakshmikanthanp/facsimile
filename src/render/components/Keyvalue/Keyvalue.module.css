@@ -17,7 +17,7 @@
 }
 
 .Keyvalue:hover {
-  backdrop-filter: brightness(150%);
+  backdrop-filter: brightness(var(--brightness-per));
   cursor: pointer;
 }
 
