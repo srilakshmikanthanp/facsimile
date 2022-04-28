@@ -3,8 +3,5 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import createMainWindow from "./mainWindow";
-
-export {
-  createMainWindow
-};
+// module for css
+declare module '*.module.css';

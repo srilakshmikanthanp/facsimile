@@ -6,7 +6,7 @@
 import { BrowserWindow } from 'electron';
 
 // Function to create Main Window
-export default function createMainWindow(preload: string, loadURL: string) {
+export default function createMainFrame(preload: string, loadURL: string) {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     alwaysOnTop: true,

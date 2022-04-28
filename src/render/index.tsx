@@ -3,8 +3,12 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import React from "react";
 import ReactDOM from "react-dom";
+import React from "react";
 import App from "./App";
 
-ReactDOM.render(<App/>, document.getElementById("root"));
+// Root Element to render the React App
+const rootElement = document.getElementById("root");
+
+// Render to DOM
+ReactDOM.render(<App/>, rootElement);

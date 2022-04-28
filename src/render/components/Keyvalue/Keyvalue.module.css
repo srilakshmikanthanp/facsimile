@@ -1,0 +1,27 @@
+/**
+ * Copyright (c) 2022 Sri Lakshmi Kanthan P
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+@import url('../../styles/global.css');
+
+.Keyvalue {
+  height: max-content;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.Keyvalue:hover {
+  backdrop-filter: brightness(150%);
+  cursor: pointer;
+}
+
+.Keyvalue:focus {
+  background-color: var(--hover-bg-color);
+  color: white;
+}
