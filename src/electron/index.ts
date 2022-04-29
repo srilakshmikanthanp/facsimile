@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut, Menu, MenuItem } from 'electron';
 import { APP_SHORTCUT_KEY } from './constants';
 import { createMainFrame } from "./frames";
 
@@ -33,18 +33,41 @@ app.whenReady().then(() => {
     }
   });
 
-  // register for esc key event
-  globalShortcut.register("Escape", () => {
-    if (mainFrame && mainFrame.isVisible()) {
-      mainFrame.hide();
-    }
-  });
-
   // create the main window.
-  mainFrame = createMainFrame( 
+  mainFrame = createMainFrame(
     MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     MAIN_WINDOW_WEBPACK_ENTRY,
   );
+
+  // Hidden Menu
+  const menu = new Menu();
+
+  // Esc Event
+  menu.append(new MenuItem({
+    label: "Hide on Escape",
+    visible: false,
+    accelerator: "Escape",
+    click: (item, window) => {
+      if (window.isVisible()) {
+        window.hide();
+      }
+    }
+  }))
+
+  // Ctrl + D
+  menu.append(new MenuItem({
+    label: "Show Dev Tools on Ctrl + D",
+    visible: false,
+    accelerator: "Control+D",
+    click: (item, window) => {
+      if (window.isVisible()) {
+        window.webContents.openDevTools();
+      }
+    }
+  }));
+
+  // Add Menu
+  mainFrame.setMenu(menu);
 });
 
 // Close the window when the application is Lost Focus.

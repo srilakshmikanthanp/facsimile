@@ -9,7 +9,7 @@ import { InputModal } from "../../modals";
 import { Pair } from "../../interfaces";
 import React, { useState } from "react";
 
-
+// Home Page of the Application
 export default function Homepage() {
   // Component States
   const [isModalShowing, setIsModalShowing] = useState(false);
@@ -35,18 +35,20 @@ export default function Homepage() {
     setIsModalShowing(true);
   }
 
+  // Delete Handler
+  const onDelete = (pair: Pair) => {
+    console.log(pair);
+  }
+
+  // Rename Handler
+  const onRename = (oldKey: string, newKey: string) => {
+    console.log(oldKey, newKey);
+  }
+
   // A Constant Pairs before states
   const pairs: Pair[] = [
     { key: "Microsoft", value: "xxx" },
     { key: "Google", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
     { key: "Amazon", value: "xxx" },
     { key: "Amazon", value: "xxx" },
     { key: "Amazon", value: "xxx" },
@@ -60,6 +62,8 @@ export default function Homepage() {
     return (
       <Keyvalue
         onSelected={selectHandler}
+        onDelete={onDelete}
+        onRenamed={onRename}
         pair={value}
         tabIndex={index}
       />
@@ -69,7 +73,7 @@ export default function Homepage() {
   return (
     <div className={styles.Homepage}>
       <div>
-      <InputModal
+        <InputModal
           onCancelled={onCancelled}
           show={isModalShowing}
           onAdded={onValueAdded}
