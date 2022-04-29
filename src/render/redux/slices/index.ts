@@ -3,19 +3,18 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import KeyvalueReducer, { addKeyvalue, removeKey, renameKey } from "./KeyvalueSlice";
+import KeyvaluesReducer, { addNewKeyvalue, removeKeyvalue, selectKeyvalues } from "./KeyvalueSlice";
 import { combineReducers } from "@reduxjs/toolkit";
 
 // Root Reducers
 const rootReducer = combineReducers({
-  keyvalue: KeyvalueReducer
+  keyvalues: KeyvaluesReducer
 });
 
 export default rootReducer;
 
 // actions
-export {
-  addKeyvalue,
-  removeKey,
-  renameKey
-};
+export { addNewKeyvalue, removeKeyvalue };
+
+// selectors
+export { selectKeyvalues };

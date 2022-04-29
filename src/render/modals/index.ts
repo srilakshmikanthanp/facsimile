@@ -3,8 +3,8 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import InputModal from "./InputModal/InputModal";
+import KeyvalueModal from "./KeyvalueModal/KeyvalueModal";
 
 export {
-    InputModal
+  KeyvalueModal
 };
