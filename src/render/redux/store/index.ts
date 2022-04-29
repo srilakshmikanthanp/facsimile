@@ -4,7 +4,7 @@
 // https://opensource.org/licenses/MIT
 
 import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "../reducers";
+import rootReducer from "../slices";
 
 // Redux Store Create
 const store = configureStore({

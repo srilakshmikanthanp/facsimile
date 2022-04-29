@@ -50,11 +50,6 @@ export default function Homepage() {
     { key: "Microsoft", value: "xxx" },
     { key: "Google", value: "xxx" },
     { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
-    { key: "Amazon", value: "xxx" },
   ]
 
   // Key Value Elements
@@ -66,6 +61,7 @@ export default function Homepage() {
         onRenamed={onRename}
         pair={value}
         tabIndex={index}
+        key={index}
       />
     );
   });
