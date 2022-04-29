@@ -16,9 +16,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--hover-bg-color);
+  background-color: var(--scroll-bg-col);
   border-radius: 10px;
   pointer-events: auto;
+ 
 }
 
 html, body {

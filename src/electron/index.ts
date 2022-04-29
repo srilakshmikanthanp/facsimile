@@ -18,7 +18,7 @@ declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 
 // Main Window is created on app.on('ready')
-let mainWindow: BrowserWindow | null = null;
+let mainFrame: BrowserWindow | null = null;
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -26,15 +26,22 @@ let mainWindow: BrowserWindow | null = null;
 app.whenReady().then(() => {
   // register key to toggle main window visibility
   globalShortcut.register(APP_SHORTCUT_KEY, () => {
-    if (mainWindow && mainWindow.isVisible()) {
-      mainWindow.hide();
-    } else if (mainWindow) {
-      mainWindow.show();
+    if (mainFrame && mainFrame.isVisible()) {
+      mainFrame.hide();
+    } else if (mainFrame) {
+      mainFrame.show();
+    }
+  });
+
+  // register for esc key event
+  globalShortcut.register("Escape", () => {
+    if (mainFrame && mainFrame.isVisible()) {
+      mainFrame.hide();
     }
   });
 
   // create the main window.
-  mainWindow = createMainFrame(
+  mainFrame = createMainFrame( 
     MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     MAIN_WINDOW_WEBPACK_ENTRY,
   );

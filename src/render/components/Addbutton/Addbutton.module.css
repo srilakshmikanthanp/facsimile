@@ -13,6 +13,7 @@
   font-size: 1.2rem;
   font-weight: bolder;
   user-select: none;
+  padding: 5px;
 }
 
 .Addbutton:hover {

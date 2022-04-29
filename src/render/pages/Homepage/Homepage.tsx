@@ -5,19 +5,34 @@
 
 import { Addbutton, Keyvalue } from "../../components";
 import styles from "./Homepage.module.css";
+import { InputModal } from "../../modals";
 import { Pair } from "../../interfaces";
-import React from "react";
+import React, { useState } from "react";
 
 
 export default function Homepage() {
+  // Component States
+  const [isModalShowing, setIsModalShowing] = useState(false);
+
   // Click Handler for the Key Value
   const selectHandler = (pair: Pair) => {
     console.log(pair);
   }
 
+  // on Add Handler
+  const onValueAdded = (pair: Pair) => {
+    console.log(pair);
+    setIsModalShowing(false);
+  }
+
+  // on Cancel Handler
+  const onCancelled = () => {
+    setIsModalShowing(false);
+  }
+
   // Add Handler
-  const addHandler = () => {
-    console.log("New Add");
+  const onAddHandler = () => {
+    setIsModalShowing(true);
   }
 
   // A Constant Pairs before states
@@ -25,14 +40,27 @@ export default function Homepage() {
     { key: "Microsoft", value: "xxx" },
     { key: "Google", value: "xxx" },
     { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
+    { key: "Amazon", value: "xxx" },
   ]
 
   // Key Value Elements
   const elements = pairs.map((value, index) => {
     return (
-      <Keyvalue 
-        onSelected={selectHandler} 
-        pair={value} 
+      <Keyvalue
+        onSelected={selectHandler}
+        pair={value}
         tabIndex={index}
       />
     );
@@ -40,11 +68,20 @@ export default function Homepage() {
 
   return (
     <div className={styles.Homepage}>
+      <div>
+      <InputModal
+          onCancelled={onCancelled}
+          show={isModalShowing}
+          onAdded={onValueAdded}
+        />
+      </div>
       <div className={styles.Pairs}>
         {elements}
       </div>
       <div className={styles.Adder}>
-        <Addbutton onAdd={addHandler}/>
+        <Addbutton
+          onAdd={onAddHandler}
+        />
       </div>
     </div>
   )

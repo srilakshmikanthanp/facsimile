@@ -16,6 +16,7 @@ export default function createMainFrame(preload: string, loadURL: string) {
     frame: false,
     show: false,
     skipTaskbar: true,
+    resizable: false,
     webPreferences: {
       devTools: process.env.NODE_ENV !== "production",
       preload: preload

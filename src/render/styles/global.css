@@ -9,6 +9,7 @@
   :root {
     --hover-bg-color: #0078D7;
     --brightness-per: 80%;
+    --scroll-bg-col: var(--bs-light);
   }
 }
 
@@ -16,5 +17,6 @@
   :root {
     --hover-bg-color: #0078D7;
     --brightness-per: 150%;
+    --scroll-bg-col: var(--bs-gray-dark);
   }
 }
