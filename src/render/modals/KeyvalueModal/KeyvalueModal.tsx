@@ -50,10 +50,19 @@ export default function KeyvalueModal({
     setIsValidated(false);
   }
 
-  // on Key Down Handler
-  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  // on Key Down Handler Submit
+  const onKeyDownSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       onSubmit();
+    }
+  }
+
+  // on key Event Handler 
+  const onKeyDownWindow = (e: KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === "Escape") {
+      e.stopPropagation();
+      e.stopPropagation();
+      console.log("Escape");
     }
   }
 
@@ -63,7 +72,7 @@ export default function KeyvalueModal({
   // Render
   return (
     <Modal show={show} onHide={onCancelled} centered={true} dialogClassName={styles.Modal}>
-      <Modal.Header className={styles.Header} closeButton />
+      <Modal.Header className={styles.Header} closeButton onKeyDown={onKeyDownWindow}/>
       <Modal.Body className={styles.Body}>
         <Form noValidate validated={isValidated}>
           <FloatingLabel controlId="keyinput" label="Key" className="mb-3">
@@ -94,7 +103,7 @@ export default function KeyvalueModal({
           className={styles.Button} 
           onClick={onSubmit} 
           tabIndex={3} 
-          onKeyDown={onKeyDown}
+          onKeyDown={onKeyDownSubmit}
         >
           ➜
         </div>

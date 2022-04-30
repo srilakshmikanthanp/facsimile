@@ -6,32 +6,55 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Pair } from "../../interfaces";
 
+/***********************
+ *      Selectors      *
+ **********************/
+
 // Key Value Selector
 export const selectKeyvalues = (state: { keyvalues: { list: Pair[]; }; }): Pair[] => {
   return state.keyvalues.list;
 };
 
-// initial state
-const initialState: { list: Pair[]; } = { list: [] };
+/**********************
+ *  Internal Actions  *
+ *********************/
+
+// Add new key value pair
+const _addNewKeyValue = (state: {list: Pair[]}, action: PayloadAction<Pair>) => {
+  state.list.push(action.payload);
+}
+
+// remove key value pair
+const _removeKeyValue = (state: {list: Pair[]}, action: PayloadAction<Pair>) => {
+  state.list.splice(state.list.indexOf(action.payload), 1);
+}
+
+/********************
+ *  Slice Creation  *
+ *******************/
 
 // Create the slice
 const KeyvaluesSlice = createSlice({
   name: "keyvalues",
-  initialState,
+  initialState: { list: [] as Array<Pair> },
   reducers: {
-    // Add a keyvalue pair
-    addNewKeyvalue: (state, action: PayloadAction<Pair>) => {
-      state.list.push(action.payload);
-    },
     // Remove a keyvalue pair
-    removeKeyvalue: (state, action: PayloadAction<Pair>) => {
-      state.list.splice(state.list.indexOf(action.payload), 1);
-    },
+    removeKeyvalue: _removeKeyValue,
+    // Add a keyvalue pair
+    addNewKeyvalue: _addNewKeyValue,
   }
 });
 
-// export actions
-export const { addNewKeyvalue, removeKeyvalue } = KeyvaluesSlice.actions;
+/********************
+ * Export Reducer   *
+ *******************/
 
 // Export the reducer
 export default KeyvaluesSlice.reducer;
+
+/*******************
+ * Export Actions  *
+ ******************/
+
+// Export the Actions
+export const { addNewKeyvalue, removeKeyvalue } = KeyvaluesSlice.actions;

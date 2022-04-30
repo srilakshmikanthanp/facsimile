@@ -27,7 +27,8 @@ export default function Homepage() {
 
   // Click Handler for the Key Value
   const selectHandler = (pair: Pair) => {
-    console.log(pair);
+    window.keyvalueAPI.copyKeyValue(pair.key);
+    window.keyvalueAPI.hideWindow();
   }
 
   // on key down handler for add

@@ -3,11 +3,8 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { APP_SHORTCUT_KEY } from "./constants";
-import * as ipcevents from "./ipcevents";
+import createMainWindow from "./mainWindow";
 
 export {
-  APP_SHORTCUT_KEY,
-  ipcevents
+  createMainWindow
 };
-

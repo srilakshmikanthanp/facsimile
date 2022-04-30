@@ -14,8 +14,8 @@ const rootReducer = combineReducers({
 // Export
 export default rootReducer;
 
-// actions
-export { addNewKeyvalue, removeKeyvalue };
-
 // selectors
 export { selectKeyvalues };
+
+// actions
+export { addNewKeyvalue, removeKeyvalue };

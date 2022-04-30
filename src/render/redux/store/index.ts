@@ -8,7 +8,7 @@ import rootReducer from "../slices";
 
 // Redux Store Create
 const store = configureStore({
-    reducer: rootReducer
+  reducer: rootReducer
 });
 
 // Export Redux Store

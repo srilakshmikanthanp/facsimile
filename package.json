@@ -55,7 +55,7 @@
                   "js": "./src/render/index.tsx",
                   "name": "main_window",
                   "preload": {
-                    "js": "./src/electron/scripts/mainPreload.ts"
+                    "js": "./src/electron/preloads/mainPreload.ts"
                   }
                 }
               ]
@@ -96,6 +96,7 @@
     "@types/react-redux": "^7.1.24",
     "bootstrap": "^5.1.3",
     "electron-squirrel-startup": "^1.0.0",
+    "keytar": "^7.9.0",
     "react": "^18.1.0",
     "react-bootstrap": "^2.3.1",
     "react-dom": "^18.1.0",
