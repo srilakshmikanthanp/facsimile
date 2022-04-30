@@ -12,7 +12,9 @@ import { Pair } from "../../interfaces";
 
 // Key Value Selector
 export const selectKeyvalues = (state: { keyvalues: { list: Pair[]; }; }): Pair[] => {
-  return state.keyvalues.list;
+  return state.keyvalues.list.slice(0, undefined).sort((a, b) => {
+    return a.key.localeCompare(b.key);
+  });
 };
 
 /**********************

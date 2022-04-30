@@ -4,6 +4,7 @@
 // https://opensource.org/licenses/MIT
 
 import { BrowserWindow, clipboard, ipcMain } from 'electron';
+import path from 'path';
 import { ipcevents } from '../constants';
 import { store } from "../functions";
 import { Pair } from '../interfaces';
@@ -13,7 +14,7 @@ export default function createMainWindow(preload: string, loadURL: string) {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     alwaysOnTop: true,
-    icon: null,
+    icon: path.resolve(__dirname, "../../assets/images/icon.png"),
     height: 400,
     width: 350,
     frame: false,

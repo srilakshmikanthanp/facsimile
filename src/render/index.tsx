@@ -21,7 +21,8 @@ const observeKeyvalueStateChange = () => {
     const currentState = store.getState().keyvalues.list;
 
     // Deleted keyvalue
-    const deletedKeyvalues = previousState.list.filter((item: Pair) => {
+    const deletedKeyvalues = previousState.list.filter(
+      (item: Pair) => {
       return !currentState.includes(item)
     });
 
@@ -31,7 +32,8 @@ const observeKeyvalueStateChange = () => {
     });
 
     // Added new keyvalue
-    const addedKeyvalues = currentState.filter((item: Pair) => {
+    const addedKeyvalues = currentState.filter(
+      (item: Pair) => {
       return !previousState.list.includes(item)
     });
 
