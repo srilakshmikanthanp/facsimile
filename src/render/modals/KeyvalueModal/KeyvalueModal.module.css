@@ -24,6 +24,8 @@
   border-radius: 10px;
   font-size: 0.9rem;
   cursor: pointer;
+  width: 80px;
+  text-align: center;
 }
 
 .Button:hover {

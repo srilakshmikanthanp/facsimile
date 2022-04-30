@@ -30,6 +30,13 @@ export default function Homepage() {
     console.log(pair);
   }
 
+  // on key down handler for add
+  const onKeyDown = (e: KeyboardEvent) => {
+    if(e.key === '=' && e.ctrlKey) {
+      setIsNewModalShowing(true);
+    }
+  }
+
   // Key Value Add Handler
   const onAddRequested = () => {
     setIsNewModalShowing(true);
@@ -87,6 +94,9 @@ export default function Homepage() {
       />
     );
   });
+
+  // add Key event to the body
+  document.body.addEventListener("keydown", onKeyDown);
 
   // Render
   return (

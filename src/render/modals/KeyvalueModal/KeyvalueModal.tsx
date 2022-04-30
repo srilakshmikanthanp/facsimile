@@ -3,8 +3,8 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+import React, { HTMLAttributes, useEffect, useState, KeyboardEvent } from "react";
 import { Modal, FloatingLabel, Form } from "react-bootstrap";
-import React, { HTMLAttributes, useEffect, useState } from "react";
 import styles from "./KeyvalueModal.module.css";
 import { Pair } from "../../interfaces";
 
@@ -31,14 +31,9 @@ export default function KeyvalueModal({
   const [value, setValue] = useState<string>(initial?.value ?? "");
 
   // initializes the component key value pair
-  const iniKeyvalue = () => {
+  const initializeKeyvalue = () => {
     setKey(initial?.key ?? "");
     setValue(initial?.value ?? "");
-  }
-
-  // on component mount
-  const onMount = () => {
-    setIsValidated(false);
   }
 
   // On Submit Handler
@@ -51,11 +46,19 @@ export default function KeyvalueModal({
     onPairEntered && onPairEntered({
       key: key, value: value
     });
+
+    setIsValidated(false);
+  }
+
+  // on Key Down Handler
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSubmit();
+    }
   }
 
   // use Effect to set the initial value
-  useEffect(onMount);
-  useEffect(iniKeyvalue, [initial]);
+  useEffect(initializeKeyvalue, [initial]);
 
   // Render
   return (
@@ -71,6 +74,7 @@ export default function KeyvalueModal({
               required
               isInvalid={keyError ?? false}
               value={key}
+              tabIndex={1}
             />
           </FloatingLabel>
           <FloatingLabel controlId="valueinput" label="Value">
@@ -80,12 +84,18 @@ export default function KeyvalueModal({
               placeholder="Key"
               required
               value={value}
+              tabIndex={2}
             />
           </FloatingLabel>
         </Form>
       </Modal.Body>
       <Modal.Footer className={styles.Footer}>
-        <div className={styles.Button} onClick={onSubmit}>
+        <div 
+          className={styles.Button} 
+          onClick={onSubmit} 
+          tabIndex={3} 
+          onKeyDown={onKeyDown}
+        >
           ➜
         </div>
       </Modal.Footer>
