@@ -40,7 +40,6 @@
       </ul>
     </li>
     <li><a href="#demo">Demo</a></li>
-    <li><a href="#security">Security</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
