@@ -8,11 +8,11 @@ import styles from "./Addbutton.module.css";
 
 // Properties to Add button Component
 interface IProps extends HTMLAttributes<HTMLDivElement> {
-  onAdd?: () => void;
+  onAddRequest?: () => void;
 } 
 
 // Actual Component
-export default function Addbutton({ className, onAdd }: IProps) {
+export default function Addbutton({ className, onAddRequest: onAdd }: IProps) {
   // Click Handler
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const clickHandler = (_event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

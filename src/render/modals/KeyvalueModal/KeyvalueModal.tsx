@@ -30,12 +30,15 @@ export default function KeyvalueModal({
   const [key, setKey] = useState<string>(initial?.key ?? "");
   const [value, setValue] = useState<string>(initial?.value ?? "");
 
-  console.log(initial);
-
-  // initializes the component
-  const initializer = () => {
+  // initializes the component key value pair
+  const iniKeyvalue = () => {
     setKey(initial?.key ?? "");
     setValue(initial?.value ?? "");
+  }
+
+  // on component mount
+  const onMount = () => {
+    setIsValidated(false);
   }
 
   // On Submit Handler
@@ -48,14 +51,11 @@ export default function KeyvalueModal({
     onPairEntered && onPairEntered({
       key: key, value: value
     });
-
-    setIsValidated(false);
-    setKey("");
-    setValue("");
   }
 
   // use Effect to set the initial value
-  useEffect(initializer, [initial]);
+  useEffect(onMount);
+  useEffect(iniKeyvalue, [initial]);
 
   // Render
   return (

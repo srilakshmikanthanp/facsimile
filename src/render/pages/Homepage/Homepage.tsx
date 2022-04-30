@@ -15,6 +15,7 @@ import React, { useState } from "react";
 export default function Homepage() {
   // Component States
   const [editInitial, setEditInitial] = useState<Pair>({ key: "", value: "" });
+  const [newInitial, setNewInitial] = useState<Pair>({ key: "", value: "" });
   const [isEditModalShowing, setIsEditModalShowing] = useState(false);
   const [isNewModalShowing, setIsNewModalShowing] = useState(false);
   const [isErrorInEdit, setIsErrorInEdit] = useState(false);
@@ -35,12 +36,12 @@ export default function Homepage() {
   }
 
   // Delete Handler
-  const onDelete = (pair: Pair) => {
+  const onDeleteRequest = (pair: Pair) => {
     dispatch(removeKeyvalue(pair));
   }
 
   // Rename Handler
-  const onUpdate = (pair: Pair) => {
+  const onEditRequest = (pair: Pair) => {
     setIsErrorInEdit(false);
     setEditInitial(pair);
     setIsEditModalShowing(true);
@@ -56,6 +57,7 @@ export default function Homepage() {
     dispatch(addNewKeyvalue(pair));
     setIsErrorInNew(false);
     setIsNewModalShowing(false);
+    setNewInitial({ key: "", value: "" });
   }
 
   // on Edit Handler
@@ -69,15 +71,16 @@ export default function Homepage() {
     dispatch(addNewKeyvalue(pair));
     setIsErrorInEdit(false);
     setIsEditModalShowing(false);
+    setEditInitial({ key: "", value: "" });
   }
 
   // Key Value Elements
   const elements = keyvalues.map((value, index) => {
     return (
       <Keyvalue
-        onEditRequested={onUpdate} 
+        onDeleteRequested={onDeleteRequest}
+        onEditRequested={onEditRequest} 
         onSelected={selectHandler} 
-        onDelete={onDelete}
         key={index}
         pair={value}
         tabIndex={index}
@@ -101,7 +104,8 @@ export default function Homepage() {
         <KeyvalueModal
           onCancelled={() => setIsNewModalShowing(false)}
           onPairEntered={onPairEntered}
-          show={(isNewModalShowing)}
+          show={isNewModalShowing}
+          initial={newInitial}
           keyError={isErrorInNew}
         />
       </div>
@@ -109,7 +113,7 @@ export default function Homepage() {
         {elements}
       </div>
       <div className={styles.Adder}>
-        <Addbutton onAdd={onAddRequested} />
+        <Addbutton onAddRequest={onAddRequested} />
       </div>
     </div>
   )

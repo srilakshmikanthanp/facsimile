@@ -11,10 +11,13 @@ export const selectKeyvalues = (state: { keyvalues: { list: Pair[]; }; }): Pair[
   return state.keyvalues.list;
 };
 
+// initial state
+const initialState: { list: Pair[]; } = { list: [] };
+
 // Create the slice
 const KeyvaluesSlice = createSlice({
   name: "keyvalues",
-  initialState: { list: [] as Pair[] },
+  initialState,
   reducers: {
     // Add a keyvalue pair
     addNewKeyvalue: (state, action: PayloadAction<Pair>) => {

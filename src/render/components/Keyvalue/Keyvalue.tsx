@@ -11,12 +11,12 @@ import { Pair } from "../../interfaces";
 interface IProps extends HTMLAttributes<HTMLDivElement> {
   onEditRequested?: (pair: Pair) => void;
   onSelected?: (pair: Pair) => void;
-  onDelete?: (pair: Pair) => void;
+  onDeleteRequested?: (pair: Pair) => void;
   pair: Pair;
 }
 
 // Actual Component
-export default function Keyvalue({ tabIndex, className, pair, onDelete, onSelected, onEditRequested }: IProps) {
+export default function Keyvalue({ tabIndex, className, pair, onDeleteRequested: onDelete, onSelected, onEditRequested }: IProps) {
   // Double Click Handler
   const doubleClickHandler = () => onSelected && onSelected(pair);
 
