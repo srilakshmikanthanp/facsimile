@@ -31,11 +31,11 @@ export default function Homepage() {
   }
 
   // on key down handler for add
-  const onKeyDown = (e: KeyboardEvent) => {
-    if(e.key === '=' && e.ctrlKey) {
+  document.body.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === '=' && e.ctrlKey) {
       setIsNewModalShowing(true);
     }
-  }
+  });
 
   // Key Value Add Handler
   const onAddRequested = () => {
@@ -86,17 +86,23 @@ export default function Homepage() {
     return (
       <Keyvalue
         onDeleteRequested={onDeleteRequest}
-        onEditRequested={onEditRequest} 
-        onSelected={selectHandler} 
+        onEditRequested={onEditRequest}
+        onSelected={selectHandler}
         key={index}
         pair={value}
         tabIndex={index}
       />
     );
   });
-
-  // add Key event to the body
-  document.body.addEventListener("keydown", onKeyDown);
+  // Render Component
+  const emptyMessage = (
+    <div className={styles.EmptyMessage}>
+      <p>Add Some Stuff to Get Started</p>
+      <p><span>CTRL</span> + <span>+</span> to Add New One</p>
+      <p><span>F2</span> to Edit the Existing</p>
+      <p><span>DELETE</span> to Delete Existing</p>
+    </div>
+  );
 
   // Render
   return (
@@ -120,7 +126,7 @@ export default function Homepage() {
         />
       </div>
       <div className={styles.Pairs}>
-        {elements}
+        {elements.length > 0 ? elements : emptyMessage}
       </div>
       <div className={styles.Adder}>
         <Addbutton onAddRequest={onAddRequested} />

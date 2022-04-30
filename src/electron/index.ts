@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut, Menu, MenuItem } from 'electron';
 import { APP_SHORTCUT_KEY } from './constants';
 import { createMainFrame } from "./frames";
 import { installDevTools } from "./utilities";
@@ -39,6 +39,23 @@ app.whenReady().then(() => {
     MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     MAIN_WINDOW_WEBPACK_ENTRY,
   );
+
+  // Create Menu
+  const menu = new Menu();
+
+  // Add ESC to close the app
+  menu.append(new MenuItem({
+    label: 'Hide Facsimile',
+    accelerator: 'Esc',
+    click: () => {
+      if (mainFrame && mainFrame.isVisible()) {
+        mainFrame.hide();
+      }
+    }
+  }));
+
+  // set the menu
+  Menu.setApplicationMenu(menu);
 
   // install dev tools
   if (process.env.NODE_ENV !== 'production') {
