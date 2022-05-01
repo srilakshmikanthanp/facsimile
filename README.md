@@ -68,7 +68,7 @@ To install Facsimile, follow the instructions below.
 
 Follow the instructions below to install Facsimile on different platforms.
 
-**__Getting Ready Soon__**
+Just go to [Releases](https://github.com/srilakshmikanthanp/Facsimile/releases) Find the Appropriate For You
 
 <!-- USAGE EXAMPLES -->
 ## Demo

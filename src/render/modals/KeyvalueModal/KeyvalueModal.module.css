@@ -10,12 +10,12 @@
 }
 
 .Header {
-  border: none;
+  border: none !important;
 }
 
 .Footer {
   padding-top: 0%;
-  border: none;
+  border: none !important;; 
 }
 
 .Button {

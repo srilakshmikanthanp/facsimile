@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { BrowserWindow, clipboard, ipcMain } from 'electron';
+import { app, BrowserWindow, clipboard, ipcMain } from 'electron';
 import path from 'path';
 import { ipcevents } from '../constants';
 import { store } from "../functions";
@@ -14,7 +14,7 @@ export default function createMainWindow(preload: string, loadURL: string) {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     alwaysOnTop: true,
-    icon: path.resolve(__dirname, "../../assets/images/icon.png"),
+    icon: path.resolve(__dirname, "../../assets/images/icon.ico"),
     height: 400,
     width: 350,
     frame: false,
@@ -22,7 +22,7 @@ export default function createMainWindow(preload: string, loadURL: string) {
     skipTaskbar: true,
     resizable: false,
     webPreferences: {
-      devTools: process.env.NODE_ENV !== "production",
+      devTools: !app.isPackaged,
       preload: preload
     }
   });

@@ -21,6 +21,23 @@ declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 // Main Window is created on app.on('ready')
 let mainFrame: BrowserWindow | null = null;
 
+// get the lock to chen single instance
+if (!app.requestSingleInstanceLock()) {
+  app.quit();
+}
+
+//  stop your app launching at install
+if (require('electron-squirrel-startup')) {
+  app.quit();
+}
+
+// Add app to system startup
+app.setLoginItemSettings({
+  openAtLogin: true,
+  path: app.getPath("exe")
+});
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -71,7 +88,7 @@ app.whenReady().then(() => {
   Menu.setApplicationMenu(menu);
 
   // install dev tools
-  if (process.env.NODE_ENV !== 'production') {
+  if (!app.isPackaged) {
     installDevTools();
   }
 });

@@ -6,6 +6,7 @@
 import { addNewKeyvalue } from "./redux/slices";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { Theme } from "./components";
 import { Pair } from "./interfaces";
 import store from "./redux/store";
 import React from "react";
@@ -23,8 +24,8 @@ const observeKeyvalueStateChange = () => {
     // Deleted keyvalue
     const deletedKeyvalues = previousState.list.filter(
       (item: Pair) => {
-      return !currentState.includes(item)
-    });
+        return !currentState.includes(item)
+      });
 
     // Send the difference to main process
     deletedKeyvalues.forEach((item: Pair) => {
@@ -34,8 +35,8 @@ const observeKeyvalueStateChange = () => {
     // Added new keyvalue
     const addedKeyvalues = currentState.filter(
       (item: Pair) => {
-      return !previousState.list.includes(item)
-    });
+        return !previousState.list.includes(item)
+      });
 
     // Send the difference to main process
     addedKeyvalues.forEach((item: Pair) => {
@@ -59,7 +60,9 @@ const reactRoot = ReactDOM.createRoot(rootElement);
 // Render to DOM
 reactRoot.render(
   <Provider store={store}>
-    <App />
+    <Theme>
+      <App />
+    </Theme>
   </Provider>
 );
 

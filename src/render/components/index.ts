@@ -5,8 +5,10 @@
 
 import Addbutton from "./Addbutton/Addbutton";
 import Keyvalue from "./Keyvalue/Keyvalue";
+import Theme from "./Theme/Theme";
 
 export {
   Addbutton,
-  Keyvalue
+  Keyvalue,
+  Theme
 };
