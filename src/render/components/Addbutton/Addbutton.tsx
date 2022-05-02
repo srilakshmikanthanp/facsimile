@@ -12,18 +12,11 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
 } 
 
 // Actual Component
-export default function Addbutton({ className, onAddRequest: onAdd }: IProps) {
+export default function Addbutton({ className, onAddRequest }: IProps) {
   // Click Handler
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const clickHandler = (_event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    onAdd();
-  }
-
-  // Key down Handler
-  const keyDownHandler = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key.toLocaleUpperCase() === "A" && event.ctrlKey) {
-      onAdd();
-    }
+    onAddRequest();
   }
 
   // class names for the component
@@ -36,11 +29,7 @@ export default function Addbutton({ className, onAddRequest: onAdd }: IProps) {
 
   // Renderer
   return (
-    <div 
-      onKeyDown={keyDownHandler}
-      className={classNames} 
-      onClick={clickHandler} 
-    >
+    <div className={classNames} onClick={clickHandler}>
       +
     </div>
   );
