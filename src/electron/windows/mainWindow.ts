@@ -4,10 +4,10 @@
 // https://opensource.org/licenses/MIT
 
 import { app, BrowserWindow, clipboard, ipcMain } from 'electron';
-import path from 'path';
 import { ipcevents } from '../constants';
 import { store } from "../functions";
 import { Pair } from '../interfaces';
+import path from 'path';
 
 // Function to create Main Window
 export default function createMainWindow(preload: string, loadURL: string) {

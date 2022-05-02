@@ -105,7 +105,7 @@ export default function KeyvalueModal({
           tabIndex={3} 
           onKeyDown={onKeyDownSubmit}
         >
-          ➜
+          Add
         </div>
       </Modal.Footer>
     </Modal>

@@ -34,6 +34,7 @@ if (require('electron-squirrel-startup')) {
 // Add app to system startup
 app.setLoginItemSettings({
   openAtLogin: true,
+  openAsHidden: true,
   path: app.getPath("exe")
 });
 
@@ -81,6 +82,16 @@ app.whenReady().then(() => {
       if (mainFrame && mainFrame.isVisible()) {
         mainFrame.webContents.openDevTools();
       }
+    }
+  }));
+
+  // Add for Quit
+  menu.append(new MenuItem({
+    label: "Quit",
+    visible: false,
+    accelerator: "Control+Q",
+    click: () => {
+      app.quit();
     }
   }));
 

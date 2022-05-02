@@ -102,6 +102,7 @@ export default function Homepage() {
       <p><span>CTRL</span> + <span>+</span> to Add New One</p>
       <p><span>F2</span> to Edit the Existing</p>
       <p><span>DELETE</span> to Delete Existing</p>
+      <p><span>CTRL</span> + <span>q</span> to quit</p>
     </div>
   );
 
