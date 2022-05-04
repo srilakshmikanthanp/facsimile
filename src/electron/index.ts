@@ -33,7 +33,7 @@ if (require('electron-squirrel-startup')) {
 
 // Add app to system startup
 app.setLoginItemSettings({
-  openAtLogin: true,
+  openAtLogin: app.isPackaged,
   openAsHidden: true,
   path: app.getPath("exe")
 });
@@ -57,6 +57,11 @@ app.whenReady().then(() => {
     MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     MAIN_WINDOW_WEBPACK_ENTRY,
   );
+
+  // install dev tools
+  if (!app.isPackaged) {
+    installDevTools();
+  }
 
   // Create Non visible Menu 
   const menu = new Menu();
@@ -97,11 +102,6 @@ app.whenReady().then(() => {
 
   // set the menu
   Menu.setApplicationMenu(menu);
-
-  // install dev tools
-  if (!app.isPackaged) {
-    installDevTools();
-  }
 });
 
 // Close the window when the application is Lost Focus.
