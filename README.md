@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Copy Your Most Used Text to Clipboard Easily with Facsimile!. It Helps You to Store You Most Used Text as a Key, Value Pair and Copy it to Clipboard with a Shortcut.
+Copy Your Most Used Text to Clipboard Easily with Facsimile!. It Helps You to Store You Most Used Text as a Key, Value Pair and Copy it to Clipboard with a Shortcut (Initially Developed in java available at [srilakshmikanthanp/Facsimile-old](https://github.com/srilakshmikanthanp/Facsimile-old))
 
 ### Built With
 
