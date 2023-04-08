@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-export default interface Pair {
-    key: string;
-    value: string;
+export default interface Pair<One, Two> {
+  key: One;
+  val: Two;
 }

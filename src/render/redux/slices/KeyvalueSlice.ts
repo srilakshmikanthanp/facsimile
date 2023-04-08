@@ -4,15 +4,15 @@
 // https://opensource.org/licenses/MIT
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Pair } from "../../interfaces";
+import Pair from "../../interfaces/Pair";
 
 /***********************
  *      Selectors      *
  **********************/
 
 // Key Value Selector
-export const selectKeyvalues = (state: { keyvalues: { list: Pair[]; }; }): Pair[] => {
-  return state.keyvalues.list.slice(0, undefined).sort((a, b) => {
+export const selectKeyValues = (state: { keyValues: { list: Pair<string, string>[]; }; }): Pair<string, string>[] => {
+  return state.keyValues.list.slice(0, undefined).sort((a, b) => {
     return a.key.localeCompare(b.key);
   });
 };
@@ -22,12 +22,12 @@ export const selectKeyvalues = (state: { keyvalues: { list: Pair[]; }; }): Pair[
  *********************/
 
 // Add new key value pair
-const _addNewKeyValue = (state: {list: Pair[]}, action: PayloadAction<Pair>) => {
+const _addNewKeyValue = (state: { list: Pair<string, string>[] }, action: PayloadAction<Pair<string, string>>) => {
   state.list.push(action.payload);
 }
 
 // remove key value pair
-const _removeKeyValue = (state: {list: Pair[]}, action: PayloadAction<Pair>) => {
+const _removeKeyValue = (state: { list: Pair<string, string>[] }, action: PayloadAction<Pair<string, string>>) => {
   state.list.splice(state.list.indexOf(action.payload), 1);
 }
 
@@ -36,14 +36,14 @@ const _removeKeyValue = (state: {list: Pair[]}, action: PayloadAction<Pair>) => 
  *******************/
 
 // Create the slice
-const KeyvaluesSlice = createSlice({
-  name: "keyvalues",
-  initialState: { list: [] as Array<Pair> },
+const KeyValueSlice = createSlice({
+  name: "keyValues",
+  initialState: { list: [] as Array<Pair<string, string>> },
   reducers: {
     // Remove a keyvalue pair
-    removeKeyvalue: _removeKeyValue,
+    removeKeyValue: _removeKeyValue,
     // Add a keyvalue pair
-    addNewKeyvalue: _addNewKeyValue,
+    addNewKeyValue: _addNewKeyValue,
   }
 });
 
@@ -52,11 +52,11 @@ const KeyvaluesSlice = createSlice({
  *******************/
 
 // Export the reducer
-export default KeyvaluesSlice.reducer;
+export default KeyValueSlice.reducer;
 
 /*******************
  * Export Actions  *
  ******************/
 
 // Export the Actions
-export const { addNewKeyvalue, removeKeyvalue } = KeyvaluesSlice.actions;
+export const { addNewKeyValue, removeKeyValue } = KeyValueSlice.actions;

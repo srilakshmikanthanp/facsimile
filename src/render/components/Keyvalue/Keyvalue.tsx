@@ -5,14 +5,14 @@
 
 import React, { HTMLAttributes } from "react";
 import styles from "./Keyvalue.module.css";
-import { Pair } from "../../interfaces";
+import Pair from "../../interfaces/Pair";
 
 // Properties to Key Value Component
 interface IProps extends HTMLAttributes<HTMLDivElement> {
-  onEditRequested?: (pair: Pair) => void;
-  onSelected?: (pair: Pair) => void;
-  onDeleteRequested?: (pair: Pair) => void;
-  pair: Pair;
+  onEditRequested?: (pair: Pair<string, string>) => void;
+  onSelected?: (pair: Pair<string, string>) => void;
+  onDeleteRequested?: (pair: Pair<string, string>) => void;
+  pair: Pair<string, string>;
 }
 
 // Actual Component

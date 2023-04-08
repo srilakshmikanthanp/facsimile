@@ -3,43 +3,43 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { addNewKeyvalue } from "./redux/slices";
+import { addNewKeyValue } from "./redux/slices";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { Theme } from "./components";
-import { Pair } from "./interfaces";
+import Pair from "./interfaces/Pair";
 import store from "./redux/store";
 import React from "react";
 import App from "./App";
 
 // Current state
-const previousState: { list: Pair[] } = { list: [] as Pair[] };
+const previousState: { list: Pair<string, string>[] } = { list: [] as Pair<string, string>[] };
 
 // Handle Change
 const observeKeyvalueStateChange = () => {
-  if (previousState.list !== store.getState().keyvalues.list) {
+  if (previousState.list !== store.getState().keyValues.list) {
     // Filter the Difference between the previous and current state
-    const currentState = store.getState().keyvalues.list;
+    const currentState = store.getState().keyValues.list;
 
     // Deleted keyvalue
     const deletedKeyvalues = previousState.list.filter(
-      (item: Pair) => {
+      (item: Pair<string, string>) => {
         return !currentState.includes(item)
       });
 
     // Send the difference to main process
-    deletedKeyvalues.forEach((item: Pair) => {
+    deletedKeyvalues.forEach((item: Pair<string, string>) => {
       window.keyvalueAPI.delKeyValue(item.key);
     });
 
     // Added new keyvalue
     const addedKeyvalues = currentState.filter(
-      (item: Pair) => {
+      (item: Pair<string, string>) => {
         return !previousState.list.includes(item)
       });
 
     // Send the difference to main process
-    addedKeyvalues.forEach((item: Pair) => {
+    addedKeyvalues.forEach((item: Pair<string, string>) => {
       window.keyvalueAPI.setKeyValue(item);
     });
 
@@ -68,8 +68,8 @@ reactRoot.render(
 
 // Load the initial state
 window.keyvalueAPI.getAllKeyValues()
-  .then((keyvalues: Pair[]) => {
-    keyvalues.forEach((item: Pair) => {
-      store.dispatch(addNewKeyvalue(item));
+  .then((keyvalues: Pair<string, string>[]) => {
+    keyvalues.forEach((item: Pair<string, string>) => {
+      store.dispatch(addNewKeyValue(item));
     });
   });

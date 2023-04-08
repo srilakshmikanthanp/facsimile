@@ -1,19 +1,26 @@
 /**
+ * Copyright (c) 2023 Sri Lakshmi Kanthan P
+ * 
+ * This software is released under the MIT License.
+ * https://opensource.org/licenses/MIT
+ */
+
+/**
  * Copyright (c) 2022 Sri Lakshmi Kanthan P
  * 
  * This software is released under the MIT License.
  * https://opensource.org/licenses/MIT
  */
 
-.Homepage ::-webkit-scrollbar-thumb {
+.App ::-webkit-scrollbar-thumb {
   visibility: hidden;
 }
 
-.Homepage:hover ::-webkit-scrollbar-thumb {
+.App:hover ::-webkit-scrollbar-thumb {
   visibility: visible;
 }
 
-.Homepage {
+.App {
   max-width: 100%;
   max-height: 100%;
   height: 100%;
@@ -23,7 +30,7 @@
   align-items: center;
 }
 
-.Homepage .Pairs {
+.App .Pairs {
   flex-direction: column;
   display: flex;
   flex-shrink: 1;
@@ -33,7 +40,7 @@
   width: 100%;
 }
 
-.Homepage .Adder {
+.App .Adder {
   position: fixed;
   bottom: 0%;
   width: 100%;

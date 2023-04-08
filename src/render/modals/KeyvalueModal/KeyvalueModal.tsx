@@ -6,13 +6,13 @@
 import React, { HTMLAttributes, useEffect, useState, KeyboardEvent } from "react";
 import { Modal, FloatingLabel, Form } from "react-bootstrap";
 import styles from "./KeyvalueModal.module.css";
-import { Pair } from "../../interfaces";
+import Pair from "../../interfaces/Pair";
 
 // Component Properties
 interface IProps extends HTMLAttributes<HTMLDivElement> {
-  onPairEntered?: (pair: Pair) => void;
+  onPairEntered?: (pair: Pair<string, string>) => void;
   onCancelled?: () => void;
-  initial?: Pair;
+  initial?: Pair<string, string>;
   keyError?: boolean;
   show: boolean;
 }
@@ -28,12 +28,12 @@ export default function KeyvalueModal({
   // States for compoennt
   const [isValidated, setIsValidated] = useState<boolean>(false);
   const [key, setKey] = useState<string>(initial?.key ?? "");
-  const [value, setValue] = useState<string>(initial?.value ?? "");
+  const [value, setValue] = useState<string>(initial?.val ?? "");
 
   // initializes the component key value pair
-  const initializeKeyvalue = () => {
+  const initializeKeyValue = () => {
     setKey(initial?.key ?? "");
-    setValue(initial?.value ?? "");
+    setValue(initial?.val ?? "");
   }
 
   // On Submit Handler
@@ -44,7 +44,7 @@ export default function KeyvalueModal({
     }
 
     onPairEntered && onPairEntered({
-      key: key, value: value
+      key: key, val: value
     });
 
     setIsValidated(false);
@@ -67,7 +67,7 @@ export default function KeyvalueModal({
   }
 
   // use Effect to set the initial value
-  useEffect(initializeKeyvalue, [initial]);
+  useEffect(initializeKeyValue, [initial]);
 
   // Render
   return (

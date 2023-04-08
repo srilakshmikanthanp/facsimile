@@ -4,13 +4,13 @@
 // https://opensource.org/licenses/MIT
 
 import { contextBridge, ipcRenderer } from "electron";
-import { ipcevents } from "../constants";
-import { Pair } from "../interfaces";
+import * as ipcevents from "../constants/ipcevents";
+import Pair from "../interface/pair";
 
 // Expose the APi to render
 contextBridge.exposeInMainWorld("keyvalueAPI", {
+  setKeyValue: (pair: Pair<string, string>) => ipcRenderer.send(ipcevents.SET_KEY_VALUE, pair),
   getKeyValue: (key: string) => ipcRenderer.invoke(ipcevents.GET_KEY_VALUE, key),
-  setKeyValue: (pair: Pair) => ipcRenderer.send(ipcevents.SET_KEY_VALUE, pair),
   delKeyValue: (key: string) => ipcRenderer.send(ipcevents.DEL_KEY_VALUE, key),
   getAllKeyValues: () => ipcRenderer.invoke(ipcevents.ALL_KEY_VALUE),
   copyKeyValue: (key: string) => ipcRenderer.send(ipcevents.CPY_KEY_VALUE, key),

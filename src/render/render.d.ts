@@ -3,13 +3,13 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { Pair } from "./interfaces";
+import Pair from "./interfaces/Pair";
 
 export interface IkeyvalueAPI {
-  getKeyValue: (key: string) =>  Promise<Pair>;
-  setKeyValue: (pair: Pair) => void;
+  getKeyValue: (key: string) => Promise<Pair<string, string>>;
+  setKeyValue: (pair: Pair<string, string>) => void;
   delKeyValue: (key: string) => void;
-  getAllKeyValues: () => Promise<Array<Pair>>;
+  getAllKeyValues: () => Promise<Array<Pair<string, string>>>;
   copyKeyValue: (key: string) => void,
   hideWindow: () => void,
 }
