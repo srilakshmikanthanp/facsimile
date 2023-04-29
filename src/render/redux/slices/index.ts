@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import KeyValueSlice, { addNewKeyValue, removeKeyValue, selectKeyValues } from "./KeyValueSlice";
+import KeyValueSlice, { addNewKeyValue, removeKeyValue, selectKeyValues } from "./keyValueSlice";
 import { combineReducers } from "@reduxjs/toolkit";
 
 // Root Reducers

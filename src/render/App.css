@@ -1,27 +1,16 @@
 /**
- * Copyright (c) 2022 Sri Lakshmi Kanthan P
+ * Copyright (c) 2023 Sri Lakshmi Kanthan P
  * 
  * This software is released under the MIT License.
  * https://opensource.org/licenses/MIT
  */
 
 ::-webkit-scrollbar {
-  background-color: inherit;
   pointer-events: none;
   width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--scroll-bg-col);
   border-radius: 10px;
   pointer-events: auto;
- 
-}
-
-html, body {
-  max-height: 100vh;
-  max-width: 100vw;
-  margin: 0%;
-  width: 100%;
-  height: 100%;
 }

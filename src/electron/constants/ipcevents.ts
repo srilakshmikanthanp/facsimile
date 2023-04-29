@@ -8,4 +8,3 @@ export const SET_KEY_VALUE = "keyvalue:set";
 export const ALL_KEY_VALUE = "keyvalue:all";
 export const DEL_KEY_VALUE = "keyvalue:del";
 export const CPY_KEY_VALUE = "keyvalue:cpy";
-export const HIDE_ELECTRON = "electron:hid";

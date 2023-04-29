@@ -130,13 +130,9 @@ app.whenReady().then(() => {
     return store.getAllKeyValues(); // two way
   });
 
-  // Hide the Electron Window
-  ipcMain.on(I.HIDE_ELECTRON, () => {
-    facsimile.isVisible() && facsimile.hide();
-  });
-
   // copy the key value to clipboard
   ipcMain.on(I.CPY_KEY_VALUE, async (event, key: string) => {
     clipboard.writeText(await store.getKeyValue(key));
+    facsimile.isVisible() && facsimile.hide();
   });
 });

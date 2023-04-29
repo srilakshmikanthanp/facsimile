@@ -4,14 +4,14 @@
 // https://opensource.org/licenses/MIT
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Pair from "../../interfaces/Pair";
+import IPair from "../../interfaces/IPair";
 
 /***********************
  *      Selectors      *
  **********************/
 
 // Key Value Selector
-export const selectKeyValues = (state: { keyValues: { list: Pair<string, string>[]; }; }): Pair<string, string>[] => {
+export const selectKeyValues = (state: { keyValues: { list: IPair<string, string>[]; }; }): IPair<string, string>[] => {
   return state.keyValues.list.slice(0, undefined).sort((a, b) => {
     return a.key.localeCompare(b.key);
   });
@@ -22,12 +22,16 @@ export const selectKeyValues = (state: { keyValues: { list: Pair<string, string>
  *********************/
 
 // Add new key value pair
-const _addNewKeyValue = (state: { list: Pair<string, string>[] }, action: PayloadAction<Pair<string, string>>) => {
-  state.list.push(action.payload);
+const _addNewKeyValue = (state: { list: IPair<string, string>[] }, action: PayloadAction<IPair<string, string>>) => {
+  if (state.list.find((e) => e.key === action.payload.key)) {
+    state.list[state.list.indexOf(action.payload)] = action.payload;
+  } else {
+    state.list.push(action.payload);
+  }
 }
 
 // remove key value pair
-const _removeKeyValue = (state: { list: Pair<string, string>[] }, action: PayloadAction<Pair<string, string>>) => {
+const _removeKeyValue = (state: { list: IPair<string, string>[] }, action: PayloadAction<IPair<string, string>>) => {
   state.list.splice(state.list.indexOf(action.payload), 1);
 }
 
@@ -38,7 +42,7 @@ const _removeKeyValue = (state: { list: Pair<string, string>[] }, action: Payloa
 // Create the slice
 const KeyValueSlice = createSlice({
   name: "keyValues",
-  initialState: { list: [] as Array<Pair<string, string>> },
+  initialState: { list: [] as Array<IPair<string, string>> },
   reducers: {
     // Remove a keyvalue pair
     removeKeyValue: _removeKeyValue,

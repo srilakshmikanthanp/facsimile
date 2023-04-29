@@ -3,19 +3,18 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import Pair from "./interfaces/Pair";
+import IPair from "./interfaces/IPair";
 
-export interface IkeyvalueAPI {
-  getKeyValue: (key: string) => Promise<Pair<string, string>>;
-  setKeyValue: (pair: Pair<string, string>) => void;
+export interface IkeyValueAPI {
+  getAllKeyValues: () => Promise<Array<IPair<string, string>>>;
+  getKeyValue: (key: string) => Promise<IPair<string, string>>;
+  setKeyValue: (pair: IPair<string, string>) => void;
   delKeyValue: (key: string) => void;
-  getAllKeyValues: () => Promise<Array<Pair<string, string>>>;
   copyKeyValue: (key: string) => void,
-  hideWindow: () => void,
 }
 
 declare global {
   interface Window {
-    keyvalueAPI: IkeyvalueAPI;
+    keyValueAPI: IkeyValueAPI;
   }
 }
