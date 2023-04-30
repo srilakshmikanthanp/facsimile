@@ -43,6 +43,7 @@ export default function AddButton({ onPairEntered }: IAddButtonProps) {
         titleText="Add Key Value"
         okayText="Add"
         cancelText="Cancel"
+        placeholder={{ key: "", val: "" }}
       />
     </React.Fragment>
   );

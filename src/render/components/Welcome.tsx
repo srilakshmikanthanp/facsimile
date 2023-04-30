@@ -13,17 +13,20 @@ const WelcomeContainer = styled.div`
 `;
 
 const ApplicationName = styled.p`
+  user-select: none;
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
 `;
 
 const InfoText = styled.p`
+  user-select: none;
   font-size: 1rem;
 `;
 
 const InstructionText = styled.p`
   font-size: 0.8rem;
+  user-select: none;
   span {
     backdrop-filter: brightness(0.8);
     font-weight: bolder;
@@ -32,6 +35,7 @@ const InstructionText = styled.p`
     margin: 0 2px;
     border-radius: 5px;
     display: inline-block;
+    user-select: none;
   }
 `;
 

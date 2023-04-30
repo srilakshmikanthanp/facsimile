@@ -32,7 +32,7 @@ const _addNewKeyValue = (state: { list: IPair<string, string>[] }, action: Paylo
 
 // remove key value pair
 const _removeKeyValue = (state: { list: IPair<string, string>[] }, action: PayloadAction<IPair<string, string>>) => {
-  state.list.splice(state.list.indexOf(action.payload), 1);
+  state.list = state.list.filter((e) => e.key !== action.payload.key);
 }
 
 /********************

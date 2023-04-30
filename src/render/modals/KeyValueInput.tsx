@@ -27,16 +27,13 @@ export default function KeyValueModal(props: IKeyValueModalProps) {
 
   // use effect
   useEffect(() => {
-    setKey(props.placeholder?.key);
-    setVal(props.placeholder?.val);
+    setKey(props.placeholder?.key || "");
+    setVal(props.placeholder?.val || "");
   }, [props.placeholder]);
 
   // on okay handler
   const onOkayHandler = () => {
-    if (key === "" || val === "") return;
-    props.onPairEntered?.({ key, val });
-    setKey("");
-    setVal("");
+    if (key && val) props.onPairEntered?.({ key, val });
   }
 
   // Render
@@ -63,7 +60,7 @@ export default function KeyValueModal(props: IKeyValueModalProps) {
         <Button onClick={() => props.onCancelled?.()}>
           {props.cancelText}
         </Button>
-        <Button onClick={onOkayHandler}>
+        <Button onClick={onOkayHandler} disabled={!key || !val}>
           {props.okayText}
         </Button>
       </DialogActions>

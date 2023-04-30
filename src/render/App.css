@@ -5,12 +5,32 @@
  * https://opensource.org/licenses/MIT
  */
 
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #606060;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #383838 !important;
+    color: #fff !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+  }
+}
+
 ::-webkit-scrollbar {
-  pointer-events: none;
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  pointer-events: auto;
 }

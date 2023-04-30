@@ -25,6 +25,9 @@ const ListItem = styled.div`
   font-size: 0.8rem;
   font-weight: bold;
   outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
 
   :hover {
     backdrop-filter: brightness(1.2) blur(2px) saturate(1.2);
@@ -32,7 +35,7 @@ const ListItem = styled.div`
   }
 
   :focus {
-    background-color: #007bff;
+    background-color: #42a5f5;
     color: white;
   }
 `;

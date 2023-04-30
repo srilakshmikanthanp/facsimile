@@ -12,9 +12,12 @@ import AddButton from "./components/AddButton";
 import './App.css';
 
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Container } from "react-bootstrap";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Application Container
@@ -23,13 +26,14 @@ const ApplicationContainer = styled(Container)`
   align-items: center;
   justify-content: center;
   display: flex;
+  min-height: 100%;
 `;
 
 // Add Button Container
 const AddButtonContainer = styled.div`
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
 `;
 
 // App Component
@@ -37,6 +41,9 @@ export default function App() {
   // State Variables
   const [editingPair, setEditingPair] = useState<IPair<string, string>>();
   const [showModal, setShowModal] = useState<boolean>(false);
+
+  // media query
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
   // Dispatcher
   const dispatch = useDispatch();
@@ -99,22 +106,31 @@ export default function App() {
     )
   });
 
+  const theme = React.useMemo(() => createTheme({
+    palette: {
+      mode: prefersDarkMode ? 'dark' : 'light',
+    },
+  }), [prefersDarkMode],);
+
   return (
-    <ApplicationContainer fluid={true} className="w-100 h-100">
-      {keyValues.length === 0 ? <Welcome /> : keyValues}
-      <AddButtonContainer>
-        <AddButton onPairEntered={addNewPairHandler} />
-      </AddButtonContainer>
-      <KeyValueModal
-        onPairEntered={onPairEdited}
-        onClosed={onClosed}
-        onCancelled={onCancelled}
-        isVisible={showModal}
-        titleText="Edit Key Value"
-        okayText="Edit"
-        cancelText="Cancel"
-        placeholder={editingPair}
-      />
-    </ApplicationContainer>
+    <ThemeProvider theme={theme}>
+      <ApplicationContainer fluid={true} className="py-3">
+        {keyValues.length === 0 ? <Welcome /> : keyValues}
+        <AddButtonContainer>
+          <AddButton onPairEntered={addNewPairHandler} />
+        </AddButtonContainer>
+        <KeyValueModal
+          onPairEntered={onPairEdited}
+          onClosed={onClosed}
+          onCancelled={onCancelled}
+          isVisible={showModal}
+          titleText="Edit Key Value"
+          okayText="Edit"
+          cancelText="Cancel"
+          placeholder={editingPair}
+        />
+      </ApplicationContainer>
+      <CssBaseline />
+    </ThemeProvider>
   );
 }
