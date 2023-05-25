@@ -10,13 +10,13 @@ const WelcomeContainer = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  color: gray;
 `;
 
 const ApplicationName = styled.p`
   user-select: none;
   font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+  font-weight: 600;
 `;
 
 const InfoText = styled.p`
@@ -27,6 +27,7 @@ const InfoText = styled.p`
 const InstructionText = styled.p`
   font-size: 0.8rem;
   user-select: none;
+  margin-bottom: 12px;
   span {
     backdrop-filter: brightness(0.8);
     font-weight: bolder;
@@ -44,9 +45,7 @@ export default function Welcome() {
   return (
     <WelcomeContainer>
       <ApplicationName>Facsimile</ApplicationName>
-      <InfoText>
-        Add something to get started
-      </InfoText>
+      <InfoText>Add Something to Get Started</InfoText>
       <InstructionText>
         <span>CTRL</span> + <span>+</span> to add new pair
       </InstructionText>
