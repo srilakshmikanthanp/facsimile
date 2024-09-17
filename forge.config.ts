@@ -16,19 +16,7 @@ const config: ForgeConfig = {
     ]
   },
   rebuildConfig: {},
-  makers: [
-    new MakerSquirrel({
-      iconUrl: 'https://raw.githubusercontent.com/srilakshmikanthanp/facsimile/main/assets/images/facsimile.ico',
-      setupIcon: './src/assets/images/facsimile.ico',
-      loadingGif: './src/assets/images/facsimile.gif',
-    }),
-    new MakerDeb({
-      options: {
-        homepage: 'https://github.com/srilakshmikanthanp/facsimile',
-        icon: './src/assets/images/facsimile.png',
-      },
-    })
-  ],
+  makers: [],
   plugins: [
     new WebpackPlugin({
       mainConfig,

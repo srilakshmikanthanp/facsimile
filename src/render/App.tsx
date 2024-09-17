@@ -93,8 +93,11 @@ export default function App() {
     setShowModal(false);
   }
 
+  // list of pairs
+  const pairs = useSelector(selectKeyValues);
+
   // Key values
-  const keyValues = useSelector(selectKeyValues).map((pair, index) => {
+  const keyValues = pairs.map((pair, index) => {
     return (
       <PairItem
         onDeleteRequested={onDeleteRequested}

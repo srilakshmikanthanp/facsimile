@@ -1,7 +1,7 @@
 {
   "name": "facsimile",
   "productName": "facsimile",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Copy Your Most Used Text (Passwords, tokens) to Clipboard",
   "main": ".webpack/main",
   "scripts": {

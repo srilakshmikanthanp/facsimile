@@ -1,0 +1,18 @@
+{
+  "appId": "com.srilakshmikanthanp.facsimile",
+  "directories": {
+    "output": "out/builder"
+  },
+  "win": {
+    "target": "msi",
+    "icon": "assets/meta/icon.ico"
+  },
+  "linux": {
+    "category": "Utility",
+    "target": "AppImage",
+    "icon": "assets/images"
+  },
+  "msi": {
+    "createDesktopShortcut": false
+  }
+}
