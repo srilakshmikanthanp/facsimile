@@ -36,7 +36,7 @@ fi
 
 # Define the List of Constants to pull the AppImage and Icon
 ICON_URL="https://github.com/srilakshmikanthanp/facsimile/blob/main/assets/images/icon.png?raw=true"
-APP_URL="https://github.com/srilakshmikanthanp/facsimile/releases/download/v1.0.3/facsimile-1.0.3.AppImage"
+APP_URL="https://github.com/srilakshmikanthanp/facsimile/releases/download/v1.0.2/facsimile-1.0.2.AppImage"
 
 # APP_HOME is where App is installed
 APP_HOME="$HOME/.facsimile";
