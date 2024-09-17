@@ -66,9 +66,15 @@ To install Facsimile, follow the instructions below.
 
 ### Installation
 
-Follow the instructions below to install Facsimile on different platforms.
+Go to [Releases](https://github.com/srilakshmikanthanp/facsimile/releases) and download the latest & suitable version to Your Platform.
 
-Just go to [Releases](https://github.com/srilakshmikanthanp/Facsimile/releases) Find the Appropriate For You
+#### Linux
+
+You can Use this command to install Quicknote,
+
+```sh
+bash <(curl -sSL https://raw.githubusercontent.com/srilakshmikanthanp/facsimile/main/scripts/setup.sh)
+```
 
 <!-- USAGE EXAMPLES -->
 ## To Open
