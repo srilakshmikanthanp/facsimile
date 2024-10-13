@@ -70,7 +70,7 @@ Go to [Releases](https://github.com/srilakshmikanthanp/facsimile/releases) and d
 
 #### Linux
 
-You can Use this command to install Quicknote,
+You can Use this command to install Facsimile,
 
 ```sh
 bash <(curl -sSL https://raw.githubusercontent.com/srilakshmikanthanp/facsimile/main/scripts/setup.sh)
